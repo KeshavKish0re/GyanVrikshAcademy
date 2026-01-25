@@ -306,23 +306,23 @@
         <form id="enquiryForm" class="row g-3 mt-3">
 
             <div class="col-md-6">
-                <input type="text" class="form-control" name="name" placeholder="Student Name" required>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Student Name" required>
             </div>
 
             <div class="col-md-6">
-                <input type="email" class="form-control" name="email" placeholder="Email" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
             </div>
 
             <div class="col-md-6">
-                <input type="text" class="form-control" name="phone" placeholder="Phone Number" required>
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone Number" required>
             </div>
 
             <div class="col-md-6">
-                <input type="text" class="form-control" name="grade" placeholder="Class/Grade" required>
+                <input type="text" class="form-control" id="grade" name="grade" placeholder="Class/Grade" required>
             </div>
 
             <div class="col-12">
-                <textarea class="form-control" name="message" rows="3"
+                <textarea class="form-control" id="message" name="message" rows="3"
                     placeholder="Your Requirement (Optional)"></textarea>
             </div>
 
@@ -330,6 +330,7 @@
                 <button type="submit" class="btn-highlight">Submit</button>
             </div>
         </form>
+
 
         <p id="responseMsg" class="text-center mt-3 fw-bold"></p>
     </div>

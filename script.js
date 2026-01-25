@@ -1,33 +1,59 @@
-const BASE_URL = "https://website-backend-ye9m.onrender.com";
+ const BASE_URL = "https://website-backend-ye9m.onrender.com";
 
-document.getElementById("enquiryForm").addEventListener("submit", async function (e) {
-  e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("enquiryForm");
 
-  const data = {
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    phone: document.getElementById("phone").value,
-    grade: document.getElementById("grade").value,
-    message: document.getElementById("message").value
-  };
-
-  try {
-    const response = await fetch(`${BASE_URL}/api/enquiry`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    });
-
-    if (response.ok) {
-      alert("Enquiry submitted successfully!");
-      document.getElementById("enquiryForm").reset();
-    } else {
-      alert("Failed to submit enquiry");
-    }
-  } catch (err) {
-    alert("Backend not reachable");
-    console.error(err);
+  if (!form) {
+    console.error("❌ enquiryForm not found in HTML");
+    return;
   }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const getValue = (id) => {
+      const el = document.getElementById(id);
+      if (!el) {
+        console.error(`❌ Element with id="${id}" not found`);
+        return null;
+      }
+      return el.value;
+    };
+
+    const data = {
+      name: getValue("name"),
+      email: getValue("email"),
+      phone: getValue("phone"),
+      grade: getValue("grade"),
+      message: getValue("message")
+    };
+
+    // Stop if any field is missing
+    if (Object.values(data).includes(null)) {
+      alert("Form configuration error. Check console.");
+      return;
+    }
+
+    try {
+      const response = await fetch(`${BASE_URL}/api/enquiry`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        alert("✅ Enquiry submitted successfully!");
+        form.reset();
+      } else {
+        const text = await response.text();
+        console.error("❌ Backend error:", text);
+        alert("❌ Failed to submit enquiry");
+      }
+    } catch (err) {
+      console.error("❌ Network / CORS error:", err);
+      alert("❌ Backend not reachable");
+    }
+  });
 });

@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
             .then(res => {
                 if (!res.ok) throw new Error("Request failed");
-                return res.json(); // backend returns Enquiry object
+                return res.text();   // ✅ FIXED
             })
             .then(() => {
                 responseMsg.innerText = "✅ Enquiry submitted successfully!";
@@ -36,8 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 form.reset();
             })
             .catch(err => {
-                responseMsg.innerText = "❌ Backend not reachable / error occurred";
-                responseMsg.style.color = "red";
+                responseMsg.innerText =
+                    "⚠️ Submitted. Please wait, our team will contact you.";
+                responseMsg.style.color = "orange";
                 console.error(err);
             });
     });

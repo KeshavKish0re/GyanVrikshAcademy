@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("ENQUIRY JS LOADED");
 
     const form = document.getElementById("enquiryForm");
+    const responseMsg = document.getElementById("responseMsg");
 
     if (!form) {
         console.error("Form NOT found");
@@ -13,32 +14,37 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
 
         const formData = {
-            name: form.elements["name"].value,
-            email: form.elements["email"].value,
-            phone: form.elements["phone"].value,
-            grade: form.elements["grade"].value,
-            message: form.elements["message"].value
+            name: form.elements["name"].value.trim(),
+            email: form.elements["email"].value.trim(),
+            phone: form.elements["phone"].value.trim(),
+            grade: form.elements["grade"].value.trim(),
+            message: form.elements["message"].value.trim()
         };
 
         console.log("FORM DATA:", formData);
 
-        fetch("http://localhost:8082/api/enquiry", {
+        fetch("https://website-backend-ye9m.onrender.com/api/enquiry", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(formData)
         })
-            .then(res => res.json())
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error("Server responded with error");
+                }
+                return res.text(); // backend text/void safe
+            })
             .then(() => {
-                document.getElementById("responseMsg").innerText =
-                    "✅ Enquiry submitted successfully!";
+                responseMsg.innerText = "✅ Enquiry submitted successfully!";
+                responseMsg.style.color = "green";
                 form.reset();
             })
             .catch(err => {
-                document.getElementById("responseMsg").innerText =
-                    "❌ Something went wrong.";
-                console.error(err);
+                responseMsg.innerText = "❌ Failed to submit enquiry. Try again.";
+                responseMsg.style.color = "red";
+                console.error("ENQUIRY ERROR:", err);
             });
     });
 });

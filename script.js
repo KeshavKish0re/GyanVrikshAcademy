@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ✅ SUBMITTING MESSAGE
     if (responseMsg) {
-      responseMsg.innerText = "⏳ Please wait 30 seconds, your form is submitting...";
+      responseMsg.innerText = "Thank you for submitting your enquiry. Visit Again!";
       responseMsg.style.color = "black";
     }
 

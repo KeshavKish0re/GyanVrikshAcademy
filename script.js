@@ -1,4 +1,4 @@
- const BASE_URL = "https://website-backend-ye9m.onrender.com";
+const BASE_URL = "https://website-backend-ye9m.onrender.com";
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("enquiryForm");
@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
       message: getValue("message")
     };
 
-    // Stop if any field is missing
     if (Object.values(data).includes(null)) {
       alert("Form configuration error. Check console.");
       return;

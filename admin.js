@@ -1,28 +1,36 @@
+const BASE_URL = "https://website-backend-ye9m.onrender.com";
+
 let allEnquiries = [];
 let currentStatusFilter = "ALL";
+
+/* 🔐 ADMIN LOGIN GUARD */
+if (!localStorage.getItem("admin")) {
+    window.location.href = "admin-login.html";
+}
 
 document.addEventListener("DOMContentLoaded", () => {
 
     const searchInput = document.getElementById("searchInput");
 
-    fetch("http://localhost:8082/api/enquiry/all")
+    fetch(`${BASE_URL}/api/enquiry/all`)
         .then(res => res.json())
         .then(data => {
             allEnquiries = data;
             applyFilters();
+        })
+        .catch(err => {
+            console.error("Failed to load enquiries", err);
+            alert("Failed to load data");
         });
 
     // 🔍 SEARCH
-    searchInput.addEventListener("input", () => {
-        applyFilters();
-    });
+    searchInput.addEventListener("input", applyFilters);
 });
 
-// 🔁 APPLY STATUS + SEARCH FILTER TOGETHER
+// 🔁 APPLY STATUS + SEARCH FILTER
 function applyFilters() {
 
     const keyword = document.getElementById("searchInput").value.toLowerCase();
-
     let filtered = allEnquiries;
 
     if (currentStatusFilter !== "ALL") {
@@ -87,7 +95,7 @@ function filterStatus(status) {
 
 // 🔁 UPDATE STATUS
 function updateStatus(id, status) {
-    fetch(`http://localhost:8082/api/enquiry/status/${id}?status=${status}`, {
+    fetch(`${BASE_URL}/api/enquiry/status/${id}?status=${status}`, {
         method: "PUT"
     }).then(() => {
         const e = allEnquiries.find(x => x.id === id);
@@ -101,7 +109,7 @@ function deleteEnquiry(id) {
 
     if (!confirm("Delete this enquiry?")) return;
 
-    fetch(`http://localhost:8082/api/enquiry/${id}`, {
+    fetch(`${BASE_URL}/api/enquiry/${id}`, {
         method: "DELETE"
     }).then(() => {
         allEnquiries = allEnquiries.filter(e => e.id !== id);

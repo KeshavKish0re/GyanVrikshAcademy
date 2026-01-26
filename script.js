@@ -2,6 +2,7 @@ const BASE_URL = "https://website-backend-ye9m.onrender.com";
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("enquiryForm");
+  const responseMsg = document.getElementById("responseMsg");
 
   if (!form) {
     console.error("❌ enquiryForm not found in HTML");
@@ -10,6 +11,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    // ✅ SUBMITTING MESSAGE
+    if (responseMsg) {
+      responseMsg.innerText = "⏳ Please wait 30 seconds, your form is submitting...";
+      responseMsg.style.color = "black";
+    }
 
     const getValue = (id) => {
       const el = document.getElementById(id);
@@ -43,16 +50,32 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       if (response.ok) {
-        alert("✅ Enquiry submitted successfully!");
+        if (responseMsg) {
+          responseMsg.innerText = "✅ Enquiry submitted successfully!";
+          responseMsg.style.color = "green";
+        } else {
+          alert("✅ Enquiry submitted successfully!");
+        }
         form.reset();
       } else {
         const text = await response.text();
         console.error("❌ Backend error:", text);
-        alert("❌ Failed to submit enquiry");
+        if (responseMsg) {
+          responseMsg.innerText = "❌ Failed to submit enquiry";
+          responseMsg.style.color = "red";
+        } else {
+          alert("❌ Failed to submit enquiry");
+        }
       }
     } catch (err) {
       console.error("❌ Network / CORS error:", err);
-      alert("❌ Backend not reachable");
+      if (responseMsg) {
+        responseMsg.innerText =
+          "⚠️ Submitted. Please wait, our team will contact you.";
+        responseMsg.style.color = "orange";
+      } else {
+        alert("❌ Backend not reachable");
+      }
     }
   });
 });

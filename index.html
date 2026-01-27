@@ -265,25 +265,45 @@
             margin: 30px 0;
             color: #ffffff;
             text-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            line-height: 1.3;
+            /* IMPORTANT */
         }
 
-        /* Planting Knowledge → Growth, Calm, Trust */
+        /* Planting Knowledge */
         .tagline .plant {
+            display: inline-block;
+            /* KEY FIX */
             color: #b9f6ca;
-            /* soft mint green */
             font-weight: 600;
             border-bottom: 3px solid rgba(185, 246, 202, 0.7);
-            padding-bottom: 4px;
+            padding-bottom: 6px;
+            margin-bottom: 8px;
+            /* space before next line */
         }
 
-        /* Harvesting Success → Power, Result, Attention */
+        /* Harvesting Success */
         .tagline .harvest {
+            display: inline-block;
+            /* KEY FIX */
             background: linear-gradient(90deg, #ff5252, #ff9800);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 700;
             margin-left: 8px;
             text-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+        }
+
+        @media (max-width: 768px) {
+            .tagline {
+                font-size: 26px;
+            }
+
+            .tagline .harvest {
+                display: block;
+                /* NEXT LINE */
+                margin-left: 0;
+                margin-top: 10px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -385,8 +405,19 @@
             color: #2e7d32;
         }
 
+        /* 🔑 MAIN FIX: Phone number kabhi break nahi hoga */
+        .phone {
+            white-space: nowrap;
+        }
 
+        /* 📱 Extra safety for very small screens */
+        @media (max-width: 480px) {
 
+            .footer p,
+            .mini-footer p {
+                font-size: 13px;
+            }
+        }
 
         @media (max-width: 768px) {
 
@@ -647,15 +678,19 @@
     </div>
     <footer class="footer mt-5">
         <h2 id="contact">Contact Us</h2>
-        <p>Email: gyanvriksh.edu@gmail.com | Phone: +91-8585895058</p>
+        <p>
+            Email: gyanvriksh.edu@gmail.com |
+            Phone: <span class="phone">+91-8585895058</span>
+        </p>
     </footer>
 
     <footer class="mini-footer">
         <p>
             Want a website like this?
-            <strong>Call / WhatsApp: +91-8585895058</strong>
+            <strong>Call / WhatsApp: <span class="phone">+91-8585895058</span></strong>
         </p>
     </footer>
+
 
     <script src="enquiry.js"></script>
     <script src="script.js"></script>

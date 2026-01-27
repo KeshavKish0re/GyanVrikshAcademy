@@ -312,6 +312,23 @@
             }
         }
 
+        /* Brand highlight */
+        .hero-title .brand {
+            font-weight: 800;
+            background: linear-gradient(90deg, #a5d6a7, #66bb6a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.6px;
+            padding: 0 4px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 30px;
+            }
+        }
+
+
 
         .hero-subtext {
             font-family: 'Poppins', sans-serif;
@@ -472,8 +489,10 @@
 
         <img src="./Screenshot 2026-01-25 033020.png" alt="Logo" class="profile-img">
         <h1 class="hero-title">
-            Transform Your Learning with Online Tutors
+            Transform Your Learning with
+            <span class="brand">GyanVriksh Academy</span>
         </h1>
+
         <h2 class="tagline">
             <span class="plant">Planting Knowledge,</span>
             <span class="harvest">Harvesting Success!</span>

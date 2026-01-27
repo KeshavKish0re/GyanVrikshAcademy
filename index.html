@@ -31,6 +31,61 @@
             color: white;
         }
 
+        .contact-section {
+            background: linear-gradient(135deg, #e3f2fd, #f1f8e9);
+            padding: 80px 0;
+        }
+
+        .contact-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #0d47a1;
+        }
+
+        .contact-subtitle {
+            font-family: 'Poppins', sans-serif;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        .contact-form-card {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .premium-input {
+            font-family: 'Poppins', sans-serif;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .premium-input:focus {
+            border-color: #2e7d32;
+            box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.2);
+        }
+
+        .btn-premium {
+            background: linear-gradient(135deg, #2e7d32, #43a047);
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            padding: 12px 40px;
+            border-radius: 30px;
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(46, 125, 50, 0.4);
+        }
+
         .navbar-brand {
             font-size: 28px;
             font-weight: bold;
@@ -192,6 +247,75 @@
             margin-bottom: 20px;
         }
 
+        .tagline {
+            font-family: 'Poppins', sans-serif;
+            font-size: 36px;
+            font-weight: 600;
+            text-align: center;
+            color: #0d47a1;
+            /* deep blue */
+            margin: 30px 0;
+        }
+
+        .tagline span {
+            color: #2e7d32;
+            /* rich green */
+            font-weight: 700;
+        }
+
+        .tagline {
+            text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .tutors-section {
+            background: linear-gradient(135deg, #f4f9ff, #eef7f2);
+            padding: 70px 0;
+        }
+
+        .tutors-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #1b5e20;
+            margin-bottom: 50px;
+        }
+
+        .tutor-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 30px 20px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tutor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .tutor-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #2e7d32;
+            margin-bottom: 15px;
+        }
+
+        .tutor-card h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #0d47a1;
+            margin-bottom: 5px;
+        }
+
+        .tutor-card p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            color: #555;
+        }
+
+
+
 
         @media (max-width: 768px) {
 
@@ -246,8 +370,10 @@
 
         <img src="./Screenshot 2026-01-25 033020.png" alt="Logo" class="profile-img">
         <h1>Transform Your Learning with Online Tutors</h1>
-        <h2>Planting Knowledge,Harvesting Success!</h2>
-        <p>Expert guidance, personalized classes, and success-driven results.</p>
+        <h2 class="tagline">
+            Planting Knowledge, <span>Harvesting Success!</span>
+        </h2>
+
         <p><strong>We offer One-to-One Classes for a personalized learning experience!</strong></p>
         <a href="#contact-form" class="btn-highlight">Book a Trial Session</a>
     </div>
@@ -286,28 +412,47 @@
         <div class="methodology-step">Start Classes</div>
     </div>
 
-    <h2 id="tutors" class="text-center mt-5">Meet Our Tutors</h2>
-    <div class="row text-center">
-        <div class="col-md-6 mb-6">
-            <img src="./keshav.png" class="tutor-img" alt="Tutor 1">
-            <h4>Keshav Kishore</h4>
-            <p>Founder & 5yrs Teaching Exp.</p>
+    <section class="tutors-section" id="tutors">
+        <div class="container">
+            <h2 class="text-center tutors-title">Meet Our Tutors</h2>
+
+            <div class="row text-center">
+
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="tutor-card">
+                        <img src="./keshav.png" class="tutor-img" alt="Keshav Kishore">
+                        <h4>Keshav Kishore</h4>
+                        <p>Founder & 5+ Years Teaching Experience</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="tutor-card">
+                        <img src="./Trishna.jpeg" class="tutor-img" alt="Trishna Dey">
+                        <h4>Trishna Dey</h4>
+                        <p>Co-Founder & Managing Director</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="tutor-card">
+                        <img src="./Nitesh.png" class="tutor-img" alt="Nitesh Kumar">
+                        <h4>Nitesh Kumar</h4>
+                        <p>Mathematics Tutor</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="tutor-card">
+                        <img src="./Aryan.jpeg" class="tutor-img" alt="Aryan Baranwal">
+                        <h4>Aryan Baranwal</h4>
+                        <p>Polity & Humanities</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="col-md-6 mb-6">
-            <img src="./Trishna.jpeg" class="tutor-img" alt="Tutor 2">
-            <h4>Trishna Dey</h4>
-            <p>Co-Founder & Managing Director </p>
-        </div>
-        <div class="col-md-6 mb-6">
-            <img src="./Nitesh.png" class="tutor-img" alt="Tutor 3">
-            <h4>Nitesh Kumar</h4>
-            <p>Maths Tutor </p>
-        </div>
-        <div class="col-md-6 mb-6">
-            <img src="./Aryan.jpeg" class="tutor-img" alt="Tutor 4">
-            <h4>Aryan Baranwal</h4>
-            <p>Polity & Humanities</p>
-        </div>
+    </section>
 
     </div>
     </div>
@@ -363,42 +508,54 @@
         </div>
     </div>
     <!-- CONTACT / TRIAL FORM (ADDED FOR FUNCTIONALITY) -->
-    <div class="container mt-5" id="contact-form">
-        <h2 class="text-center">Book a Trial Right Now</h2>
+    <section class="contact-section" id="contact-form">
+        <div class="container">
+            <h2 class="text-center contact-title">Book a Trial Right Now</h2>
+            <p class="text-center contact-subtitle">
+                Start your learning journey with a free trial session
+            </p>
 
-        <form id="enquiryForm" class="row g-3 mt-3">
+            <form id="enquiryForm" class="row g-4 mt-4 contact-form-card">
 
-            <div class="col-md-6">
-                <input type="text" class="form-control" id="name" name="name" placeholder="Student Name" required>
-            </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control premium-input" id="name" name="name"
+                        placeholder="Student Name" required>
+                </div>
 
-            <div class="col-md-6">
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
-            </div>
+                <div class="col-md-6">
+                    <input type="email" class="form-control premium-input" id="email" name="email"
+                        placeholder="Email Address" required>
+                </div>
 
-            <div class="col-md-6">
-                <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone Number" required>
-            </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control premium-input" id="phone" name="phone"
+                        placeholder="Phone Number" required>
+                </div>
 
-            <div class="col-md-6">
-                <input type="text" class="form-control" id="grade" name="grade" placeholder="Class/Grade" required>
-            </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control premium-input" id="grade" name="grade"
+                        placeholder="Class / Grade" required>
+                </div>
 
-            <div class="col-12">
-                <textarea class="form-control" id="message" name="message" rows="3"
-                    placeholder="Your Requirement "></textarea>
-            </div>
+                <div class="col-12">
+                    <textarea class="form-control premium-input" id="message" name="message" rows="4"
+                        placeholder="Tell us your requirement"></textarea>
+                </div>
 
-            <div class="col-12 text-center">
-                <button id="submitBtn" type="submit" class="btn-highlight">
-                    Submit
-                </button>
+                <div class="col-12 text-center">
+                    <button id="submitBtn" type="submit" class="btn-premium">
+                        Book Free Trial
+                    </button>
+                </div>
+            </form>
 
-            </div>
-        </form>
+            <p id="responseMsg" class="text-center mt-4 fw-semibold"></p>
+        </div>
+    </section>
 
 
-        <p id="responseMsg" class="text-center mt-3 fw-bold"></p>
+
+    <p id="responseMsg" class="text-center mt-3 fw-bold"></p>
     </div>
     <footer class="footer mt-5">
         <h2 id="contact">Contact Us</h2>

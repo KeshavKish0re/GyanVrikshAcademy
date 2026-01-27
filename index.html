@@ -159,6 +159,40 @@
             right: 10px;
         }
 
+        .about-section {
+            background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+            padding: 60px 0;
+            border-radius: 12px;
+        }
+
+        .about-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #1b5e20;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .about-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background-color: #2e7d32;
+            display: block;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .about-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #2e2e2e;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+
         @media (max-width: 768px) {
 
             .popup-left-img,
@@ -215,55 +249,67 @@
         <h2>Planting Knowledge,Harvesting Success!</h2>
         <p>Expert guidance, personalized classes, and success-driven results.</p>
         <p><strong>We offer One-to-One Classes for a personalized learning experience!</strong></p>
-        <a href="#trial" class="btn-highlight">Book a Trial Session</a>
+        <a href="#contact-form" class="btn-highlight">Book a Trial Session</a>
     </div>
 
-    <div class="container mt-5">
-        <h2 id="about" class="text-center">About Us</h2>
-        <p class="text-center">GyanVriksh Academy is an online education platform focused on building strong academic
-            foundations and guiding students toward success. We provide expert online tuitions for Classes VI–XII,
-            covering all subjects at the school level and specialized coaching in Physics, Chemistry, Mathematics, and
-            Biology for senior classes.
+    <div class="about-section mt-5" id="about">
+        <div class="container">
+            <h2 class="text-center about-title">About Us</h2>
 
-            We also prepare students for Sainik School, Ram Krishna Mission, and Olympiads, along with training in
-            computer and programming subjects such as Artificial Intelligence, C, C++, Java, Python, HTML, and CSS.
-            Additionally, we offer placement guidance for college students and coaching for government job aspirants in
-            Quantitative Aptitude and Reasoning.</p>
+            <p class="about-text">
+                <strong>GyanVriksh Academy</strong> is an online education platform focused on building strong academic
+                foundations
+                and guiding students toward success. We provide expert online tuitions for
+                <strong>Classes VI–XII</strong>, covering all subjects at the school level and specialized coaching in
+                <strong>Physics, Chemistry, Mathematics, and Biology</strong> for senior classes.
+            </p>
 
-        <h2 id="methodology" class="text-center mt-5">Our Working Methodology</h2>
-        <div class="methodology-container">
-            <div class="methodology-step">Contact Us</div>
-            <div class="methodology-step">Explain Requirement</div>
-            <div class="methodology-step">Attend Trial Session</div>
-            <div class="methodology-step">Get Familiar With Tutor</div>
-            <div class="methodology-step">Make Advance Payments</div>
-            <div class="methodology-step">Start Classes</div>
+            <p class="about-text">
+                We also prepare students for <strong>Sainik School, Ram Krishna Mission, and Olympiads</strong>, along
+                with training
+                in <strong>computer and programming subjects</strong> such as Artificial Intelligence, C, C++, Java,
+                Python,
+                HTML, and CSS. Additionally, we offer <strong>placement guidance for college students</strong> and
+                coaching for
+                <strong>government job aspirants</strong> in Quantitative Aptitude and Reasoning.
+            </p>
+        </div>
+    </div>
+
+    <h2 id="methodology" class="text-center mt-5">Our Working Methodology</h2>
+    <div class="methodology-container">
+        <div class="methodology-step">Contact Us</div>
+        <div class="methodology-step">Explain Requirement</div>
+        <div class="methodology-step">Attend Trial Session</div>
+        <div class="methodology-step">Get Familiar With Tutor</div>
+        <div class="methodology-step">Make Advance Payments</div>
+        <div class="methodology-step">Start Classes</div>
+    </div>
+
+    <h2 id="tutors" class="text-center mt-5">Meet Our Tutors</h2>
+    <div class="row text-center">
+        <div class="col-md-6 mb-6">
+            <img src="./keshav.png" class="tutor-img" alt="Tutor 1">
+            <h4>Keshav Kishore</h4>
+            <p>Founder & 5yrs Teaching Exp.</p>
+        </div>
+        <div class="col-md-6 mb-6">
+            <img src="./Trishna.jpeg" class="tutor-img" alt="Tutor 2">
+            <h4>Trishna Dey</h4>
+            <p>Co-Founder & Managing Director </p>
+        </div>
+        <div class="col-md-6 mb-6">
+            <img src="./Nitesh.png" class="tutor-img" alt="Tutor 3">
+            <h4>Nitesh Kumar</h4>
+            <p>Maths Tutor </p>
+        </div>
+        <div class="col-md-6 mb-6">
+            <img src="./Aryan.jpeg" class="tutor-img" alt="Tutor 4">
+            <h4>Aryan Baranwal</h4>
+            <p>Polity & Humanities</p>
         </div>
 
-        <h2 id="tutors" class="text-center mt-5">Meet Our Tutors</h2>
-        <div class="row text-center">
-            <div class="col-md-6 mb-6">
-                <img src="./keshav.png" class="tutor-img" alt="Tutor 1">
-                <h4>Keshav Kishore</h4>
-                <p>Founder & 5yrs Teaching Exp.</p>
-            </div>
-            <div class="col-md-6 mb-6">
-                <img src="./Trishna.jpeg" class="tutor-img" alt="Tutor 2">
-                <h4>Trishna Dey</h4>
-                <p>Co-Founder & Managing Director </p>
-            </div>
-            <div class="col-md-6 mb-6">
-                <img src="./Nitesh.png" class="tutor-img" alt="Tutor 3">
-                <h4>Nitesh Kumar</h4>
-                <p>Maths Tutor </p>
-            </div>
-            <div class="col-md-6 mb-6">
-                <img src="./Aryan.jpeg" class="tutor-img" alt="Tutor 4">
-                <h4>Aryan Baranwal</h4>
-                <p>Polity & Humanities</p>
-            </div>
-
-        </div>
+    </div>
     </div>
 
     <div id="trial" class="text-center mt-5">

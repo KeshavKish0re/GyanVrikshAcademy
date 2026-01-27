@@ -1,30 +1,22 @@
-const BASE_URL = "https://website-backend-ye9m.onrender.com";
+ const BASE_URL = "https://website-backend-ye9m.onrender.com";
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("enquiryForm");
   const responseMsg = document.getElementById("responseMsg");
+  const submitBtn = document.getElementById("submitBtn");
 
   if (!form) {
     console.error("❌ enquiryForm not found in HTML");
     return;
   }
 
-  form.addEventListener("submit", async (e) => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
-
-    // ✅ SUBMITTING MESSAGE
-    if (responseMsg) {
-      responseMsg.innerText = "Thank you for submitting your enquiry. Visit Again!";
-      responseMsg.style.color = "black";
-    }
 
     const getValue = (id) => {
       const el = document.getElementById(id);
-      if (!el) {
-        console.error(`❌ Element with id="${id}" not found`);
-        return null;
-      }
-      return el.value;
+      if (!el) return "";
+      return el.value.trim();
     };
 
     const data = {
@@ -35,47 +27,30 @@ document.addEventListener("DOMContentLoaded", () => {
       message: getValue("message")
     };
 
-    if (Object.values(data).includes(null)) {
-      alert("Form configuration error. Check console.");
+    // ❌ VALIDATION FIRST
+    if (!data.name || !data.email || !data.phone || !data.grade || !data.message) {
+      responseMsg.innerText = "❗ Please fill all the boxes";
+      responseMsg.style.color = "red";
       return;
     }
 
-    try {
-      const response = await fetch(`${BASE_URL}/api/enquiry`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-      });
+    // ✅ IMMEDIATE MESSAGE (NO WAIT)
+    responseMsg.innerText =
+      "✅ Thank you for submitting your enquiry. Visit Again!";
+    responseMsg.style.color = "green";
 
-      if (response.ok) {
-        if (responseMsg) {
-          responseMsg.innerText = "✅ Enquiry submitted successfully!";
-          responseMsg.style.color = "green";
-        } else {
-          alert("✅ Enquiry submitted successfully!");
-        }
-        form.reset();
-      } else {
-        const text = await response.text();
-        console.error("❌ Backend error:", text);
-        if (responseMsg) {
-          responseMsg.innerText = "❌ Failed to submit enquiry";
-          responseMsg.style.color = "red";
-        } else {
-          alert("❌ Failed to submit enquiry");
-        }
-      }
-    } catch (err) {
-      console.error("❌ Network / CORS error:", err);
-      if (responseMsg) {
-        responseMsg.innerText =
-          "⚠️ Submitted. Please wait, our team will contact you.";
-        responseMsg.style.color = "orange";
-      } else {
-        alert("❌ Backend not reachable");
-      }
-    }
+    submitBtn.innerText = "Submitted";
+    submitBtn.disabled = true;
+
+    // 🔹 BACKEND CALL (BACKGROUND)
+    fetch(`${BASE_URL}/api/enquiry`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    }).catch(err => console.error("Backend call failed:", err));
+
+    form.reset();
   });
 });

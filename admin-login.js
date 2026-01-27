@@ -1,3 +1,5 @@
+const BASE_URL = "https://website-backend-ye9m.onrender.com";
+
 function login() {
 
     const username = document.getElementById("username").value.trim();
@@ -11,16 +13,20 @@ function login() {
         return;
     }
 
-    fetch("http://localhost:8082/api/admin/login", {
+    fetch(`${BASE_URL}/api/admin/login`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+            "Content-Type": "application/json"
+        },
         body: JSON.stringify({ username, password })
     })
-        .then(res => {
-            if (!res.ok) throw new Error("Invalid credentials");
+        .then(async res => {
+            if (!res.ok) {
+                throw new Error("Invalid username or password");
+            }
 
-            // ✅ SAVE LOGIN STATE
-            sessionStorage.setItem("adminLoggedIn", "true");
+            // ✅ SAVE LOGIN STATE (MATCHES admin.html)
+            localStorage.setItem("admin", "true");
 
             // ✅ REDIRECT
             window.location.replace("admin.html");

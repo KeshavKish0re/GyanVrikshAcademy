@@ -3,36 +3,35 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Admin Login - Online Tutors</title>
+    <title>Admin Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-light">
+<body class="bg-light d-flex justify-content-center align-items-center vh-100">
 
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-4">
-                <div class="card shadow p-4">
-                    <h3 class="text-center mb-3">🔐 Admin Login</h3>
+    <div class="card shadow p-4" style="width: 350px;">
+        <h4 class="text-center mb-3">🔐 Admin Login</h4>
 
-                    <input type="text" id="username" class="form-control mb-2" placeholder="Username"
-                        autocomplete="username">
-
-                    <input type="password" id="password" class="form-control mb-3" placeholder="Password"
-                        autocomplete="current-password">
-
-                    <button type="button" class="btn btn-primary w-100" onclick="login()">
-                        Login
-                    </button>
-
-                    <p id="errorMsg" class="text-danger text-center mt-2"></p>
-                </div>
-            </div>
+        <!-- ❗ NO FORM TAG -->
+        <div class="mb-3">
+            <input type="text" id="username" class="form-control" placeholder="Username">
         </div>
+
+        <div class="mb-3">
+            <input type="password" id="password" class="form-control" placeholder="Password">
+        </div>
+
+        <p id="errorMsg" class="text-danger text-center"></p>
+
+        <!-- ❗ type="button" VERY IMPORTANT -->
+        <button type="button" class="btn btn-primary w-100" onclick="login()">
+            Login
+        </button>
     </div>
 
+    <!-- JS FILE MUST LOAD -->
     <script src="admin-login.js"></script>
 </body>
 

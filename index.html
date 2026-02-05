@@ -497,10 +497,74 @@
             font-weight: bold;
             color: #0d47a1;
         }
+
+        #loader {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 9999;
+        }
+
+        #loader::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            border: 5px solid #0077b6;
+            border-top: 5px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #loader {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 9999;
+        }
+
+        #loader::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            border: 5px solid #0077b6;
+            border-top: 5px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 
 <body>
+    <div id="loader"></div>
+
     <div class="top-bar">
         🚀 Admissions Open 2026 | Free Demo Class Available | Limited Seats
     </div>
@@ -519,9 +583,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="#tutors">Our Tutors</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#Result">Our Results</a>
                     </li>
                 </ul>
             </div>
@@ -549,6 +610,10 @@
         </p>
 
         <a href="#contact-form" class="btn-highlight">Book a Trial Session</a>
+        <p class="text-center mt-3" style="color:white;font-weight:600;font-size:18px;">
+            🔥 <span id="viewer">27</span> students viewing this page now
+        </p>
+
     </div>
 
     <div class="about-section mt-5" id="about">
@@ -753,6 +818,28 @@
 
         </div>
     </div>
+    <section class="container mt-5">
+        <h2 class="text-center mb-4">Our Students</h2>
+        <div class="row">
+
+            <div class="col-md-3 col-6 mb-3">
+                <img src="student1.jpg" class="img-fluid rounded shadow">
+            </div>
+
+            <div class="col-md-3 col-6 mb-3">
+                <img src="student2.jpg" class="img-fluid rounded shadow">
+            </div>
+
+            <div class="col-md-3 col-6 mb-3">
+                <img src="student3.jpg" class="img-fluid rounded shadow">
+            </div>
+
+            <div class="col-md-3 col-6 mb-3">
+                <img src="student4.jpg" class="img-fluid rounded shadow">
+            </div>
+
+        </div>
+    </section>
 
     <!-- CONTACT / TRIAL FORM (ADDED FOR FUNCTIONALITY) -->
     <section class="contact-section" id="contact-form">

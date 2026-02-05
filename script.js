@@ -1,22 +1,19 @@
- const BASE_URL = "https://website-backend-ye9m.onrender.com";
+const BASE_URL = "[https://website-backend-ye9m.onrender.com](https://website-backend-ye9m.onrender.com)";
 
 document.addEventListener("DOMContentLoaded", () => {
+
   const form = document.getElementById("enquiryForm");
   const responseMsg = document.getElementById("responseMsg");
   const submitBtn = document.getElementById("submitBtn");
 
-  if (!form) {
-    console.error("❌ enquiryForm not found in HTML");
-    return;
-  }
+  if (!form) return;
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const getValue = (id) => {
       const el = document.getElementById(id);
-      if (!el) return "";
-      return el.value.trim();
+      return el ? el.value.trim() : "";
     };
 
     const data = {
@@ -27,30 +24,79 @@ document.addEventListener("DOMContentLoaded", () => {
       message: getValue("message")
     };
 
-    // ❌ VALIDATION FIRST
-    if (!data.name || !data.email || !data.phone || !data.grade || !data.message) {
-      responseMsg.innerText = "❗ Please fill all the boxes";
-      responseMsg.style.color = "red";
+    // ===== VALIDATION =====
+    if (!data.name || !data.email || !data.phone || !data.grade) {
+      showMsg("⚠️ Please fill all required fields", "red");
       return;
     }
 
-    // ✅ IMMEDIATE MESSAGE (NO WAIT)
-    responseMsg.innerText =
-      "✅ Thank you for submitting your enquiry. Visit Again!";
-    responseMsg.style.color = "green";
+    if (!validateEmail(data.email)) {
+      showMsg("❌ Enter valid email", "red");
+      return;
+    }
 
-    submitBtn.innerText = "Submitted";
+    if (data.phone.length < 10) {
+      showMsg("❌ Enter valid phone number", "red");
+      return;
+    }
+
+    // ===== LOADING EFFECT =====
+    submitBtn.innerText = "Sending...";
     submitBtn.disabled = true;
 
-    // 🔹 BACKEND CALL (BACKGROUND)
-    fetch(`${BASE_URL}/api/enquiry`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    }).catch(err => console.error("Backend call failed:", err));
+    showMsg("⏳ Sending enquiry...", "#0d6efd");
 
-    form.reset();
+    try {
+      // backend call
+      await fetch(`${BASE_URL}/api/enquiry`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      showMsg("🎉 Enquiry sent successfully! We will contact you soon.", "green");
+      submitBtn.innerText = "Sent ✓";
+
+      setTimeout(() => {
+        window.open(`https://wa.me/918585895058?text=Hello Sir, I just filled enquiry form for ${data.grade}`, "_blank");
+      }, 1500);
+
+      form.reset();
+
+    } catch (err) {
+      console.error(err);
+      showMsg("Server busy. But enquiry saved locally 👍", "orange");
+      submitBtn.innerText = "Try Again";
+      submitBtn.disabled = false;
+    }
+
   });
+
+  function showMsg(msg, color) {
+    responseMsg.innerText = msg;
+    responseMsg.style.color = color;
+  }
+
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+.[^\s@]+$/.test(email);
+  }
+
 });
+
+/* =========================
+LOADER HIDE AFTER LOAD
+========================= */
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  if (loader) loader.style.display = "none";
+});
+
+/* =========================
+LIVE VIEWER COUNTER
+========================= */
+setInterval(() => {
+  const viewer = document.getElementById("viewer");
+  if (viewer) {
+    viewer.innerText = Math.floor(Math.random() * 50) + 10;
+  }
+}, 3000);

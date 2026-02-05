@@ -247,6 +247,31 @@
             margin-bottom: 20px;
         }
 
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            font-size: 26px;
+            padding: 14px 18px;
+            border-radius: 50%;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .card:hover,
+        .tutor-card:hover {
+            transform: translateY(-8px);
+            transition: .3s;
+        }
+
+        .profile-img {
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+        }
+
+
         .hero-title {
             font-family: 'Poppins', sans-serif;
             font-size: 44px;
@@ -456,10 +481,30 @@
                 height: 120px;
             }
         }
+
+        .top-bar {
+            background: linear-gradient(90deg, #ff9800, #ff5722);
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: .5px;
+        }
+
+        .ach {
+            font-size: 40px;
+            font-weight: bold;
+            color: #0d47a1;
+        }
     </style>
 </head>
 
 <body>
+    <div class="top-bar">
+        🚀 Admissions Open 2026 | Free Demo Class Available | Limited Seats
+    </div>
+
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <span class="phone-number me-auto">📞 +91-8585895058</span>
@@ -529,6 +574,61 @@
             </p>
         </div>
     </div>
+    <section class="container text-center mt-5">
+        <h2 class="mb-4">Our Achievements</h2>
+        <div class="row">
+
+            <div class="col-md-3 col-6">
+                <h1 class="ach">500+</h1>
+                <p>Students Taught</p>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h1 class="ach">95%</h1>
+                <p>Success Rate</p>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h1 class="ach">50+</h1>
+                <p>Selections</p>
+            </div>
+
+            <div class="col-md-3 col-6">
+                <h1 class="ach">5+</h1>
+                <p>Years Experience</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="container mt-5 text-center">
+        <h2 class="mb-4">Why Choose GyanVriksh?</h2>
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <h5>📚 1-to-1 Classes</h5>
+                <p>Personal attention</p>
+            </div>
+
+            <div class="col-md-3">
+                <h5>📊 Weekly Tests</h5>
+                <p>Progress tracking</p>
+            </div>
+
+            <div class="col-md-3">
+                <h5>👨‍🏫 Expert Tutors</h5>
+                <p>Experienced teachers</p>
+            </div>
+
+            <div class="col-md-3">
+                <h5>📞 Parent Updates</h5>
+                <p>Monthly report</p>
+            </div>
+
+        </div>
+    </section>
+
 
     <h2 id="methodology" class="text-center mt-5">Our Working Methodology</h2>
     <div class="methodology-container">
@@ -554,7 +654,7 @@
                     </div>
                 </div>
 
-                
+
                 <div class="col-md-6 col-lg-3 mb-4">
                     <div class="tutor-card">
                         <img src="./Trishna.jpeg" class="tutor-img" alt="Trishna Dey">
@@ -722,6 +822,8 @@
 
     <script src="enquiry.js"></script>
     <script src="script.js"></script>
+    <a href="https://wa.me/918585895058" target="_blank" class="whatsapp-float">💬</a>
+
 </body>
 
 </html>

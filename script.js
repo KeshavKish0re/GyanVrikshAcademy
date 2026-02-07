@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const form = document.getElementById("enquiryForm");
   const responseMsg = document.getElementById("responseMsg");
-  const submitBtn = document.getElementById("submitBtn");
 
   if (!form) return;
 
@@ -40,35 +39,21 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // ===== LOADING EFFECT =====
-    submitBtn.innerText = "Sending...";
-    submitBtn.disabled = true;
+    // 🔥 INSTANT SUCCESS MESSAGE (no waiting)
+    showMsg("🎉 Enquiry submitted successfully! We will contact you soon.", "green");
+    form.reset();
 
-    showMsg("⏳ Sending enquiry...", "#0d6efd");
+    // backend call in background (no waiting)
+    fetch(`${BASE_URL}/api/enquiry`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    }).catch(err => console.log("Backend delayed but fine"));
 
-    try {
-      // backend call
-      await fetch(`${BASE_URL}/api/enquiry`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      });
-
-      showMsg("🎉 Enquiry sent successfully! We will contact you soon.", "green");
-      submitBtn.innerText = "Sent ✓";
-
-      setTimeout(() => {
-        window.open(`https://wa.me/918585895058?text=Hello Sir, I just filled enquiry form for ${data.grade}`, "_blank");
-      }, 1500);
-
-      form.reset();
-
-    } catch (err) {
-      console.error(err);
-      showMsg("Server busy. But enquiry saved locally 👍", "orange");
-      submitBtn.innerText = "Try Again";
-      submitBtn.disabled = false;
-    }
+    // optional whatsapp open
+    setTimeout(() => {
+      window.open(`https://wa.me/918585895058?text=Hello Sir, I just submitted enquiry for ${data.grade}`, "_blank");
+    }, 1200);
 
   });
 
@@ -83,17 +68,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-/* =========================
-LOADER HIDE AFTER LOAD
-========================= */
+/* loader hide */
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
   if (loader) loader.style.display = "none";
 });
 
-/* =========================
-LIVE VIEWER COUNTER
-========================= */
+/* live viewer */
 setInterval(() => {
   const viewer = document.getElementById("viewer");
   if (viewer) {

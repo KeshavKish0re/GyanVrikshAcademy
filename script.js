@@ -1,4 +1,4 @@
-const BASE_URL = "[https://website-backend-ye9m.onrender.com](https://website-backend-ye9m.onrender.com)";
+const BASE_URL = "https://website-backend-ye9m.onrender.com";
 
 document.addEventListener("DOMContentLoaded", () => {
 

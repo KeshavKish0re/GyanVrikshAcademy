@@ -51,9 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }).catch(err => console.log("Backend delayed but fine"));
 
     // optional whatsapp open
-    setTimeout(() => {
-      window.open(`https://wa.me/918585895058?text=Hello Sir, I just submitted enquiry for ${data.grade}`, "_blank");
-    }, 1200);
+    // setTimeout(() => {
+    //   window.open(`https://wa.me/918585895058?text=Hello Sir, I just submitted enquiry for ${data.grade}`, "_blank");
+    // }, 1200);
 
   });
 

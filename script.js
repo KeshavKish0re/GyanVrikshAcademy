@@ -4,11 +4,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const form = document.getElementById("enquiryForm");
   const responseMsg = document.getElementById("responseMsg");
+  const submitBtn = form ? form.querySelector("button[type='submit']") : null;
 
   if (!form) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    // reset field borders first
+    clearErrors();
 
     const getValue = (id) => {
       const el = document.getElementById(id);
@@ -26,44 +30,68 @@ document.addEventListener("DOMContentLoaded", () => {
     // ===== VALIDATION =====
     if (!data.name || !data.email || !data.phone || !data.grade) {
       showMsg("⚠️ Please fill all required fields", "red");
+      highlightEmpty(data);
       return;
     }
 
     if (!validateEmail(data.email)) {
       showMsg("❌ Enter valid email", "red");
+      markRed("email");
       return;
     }
 
-    if (data.phone.length < 10) {
+    if (data.phone.length < 10 || isNaN(data.phone)) {
       showMsg("❌ Enter valid phone number", "red");
+      markRed("phone");
       return;
     }
 
-    // 🔥 INSTANT SUCCESS MESSAGE (no waiting)
+    // 🔥 Button booked state
+    if (submitBtn) {
+      submitBtn.innerText = "✔ Booked";
+      submitBtn.disabled = true;
+      submitBtn.style.background = "green";
+    }
+
+    // success message
     showMsg("🎉 Enquiry submitted successfully! We will contact you soon.", "green");
     form.reset();
 
-    // backend call in background (no waiting)
+    // backend call
     fetch(`${BASE_URL}/api/enquiry`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
     }).catch(err => console.log("Backend delayed but fine"));
 
-    // optional whatsapp open
-    // setTimeout(() => {
-    //   window.open(`https://wa.me/918585895058?text=Hello Sir, I just submitted enquiry for ${data.grade}`, "_blank");
-    // }, 1200);
-
   });
 
+  // ===== helper functions =====
   function showMsg(msg, color) {
     responseMsg.innerText = msg;
     responseMsg.style.color = color;
   }
 
   function validateEmail(email) {
-    return /^[^\s@]+@[^\s@]+.[^\s@]+$/.test(email);
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function markRed(id) {
+    const el = document.getElementById(id);
+    if (el) el.style.border = "2px solid red";
+  }
+
+  function clearErrors() {
+    ["name", "email", "phone", "grade", "message"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.border = "";
+    });
+  }
+
+  function highlightEmpty(data) {
+    Object.keys(data).forEach(key => {
+      if (!data[key]) markRed(key);
+    });
   }
 
 });

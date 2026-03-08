@@ -130,13 +130,20 @@
             font-weight: 700;
         }
 
-        .profile-img {
+        .logo-container {
             width: 150px;
             height: 150px;
             border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-container img {
+            width: 120%;
+            height: 120%;
             object-fit: cover;
-            object-position: center;
-            transform: scale(1.18);
         }
 
         .btn-highlight {
@@ -620,7 +627,9 @@
         <img src="./web-stock-online-learning-b-x-1024.jpg" alt="Student Left" class="popup-left-img">
         <img src="./web-stock-online-learning-b-x-1024.jpg" alt="Student Right" class="popup-right-img">
 
-        <img src="./gyanvriksh_logo_circle.png" alt="Logo" class="profile-img">
+        <div class="logo-container">
+            <img src="./gyanvriksh_logo_circle.png" alt="Logo">
+        </div>
         <h1 class="hero-title">
             Transform Your Learning with
             <span class="brand">GyanVriksh Academy</span>
